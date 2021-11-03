@@ -16,7 +16,10 @@
     <link href="styles.css" rel="stylesheet" />
     <title>Nicholas A. Randall's personal website</title>
   </head>
-  <body class="d-flex h-100 text-center text-white bg-dark" onload="vz.play();">
+  <body
+    class="d-flex h-100 text-center text-white bg-dark"
+    onload="animationLooper();"
+  >
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="mb-auto">
         <div>
@@ -32,13 +35,16 @@
 
       <main class="px-3">
         <h1>The work of an average cyborg.</h1>
-        <p class="lead">Press Play!</p>
         <p class="lead">
-          <a href="#" id="play-btn" class="btn btn-lg btn-secondary fw-bold"
+          <a
+            href="#"
+            id="play-btn"
+            onclick="play()"
+            class="btn btn-lg btn-secondary fw-bold"
             >Play</a
           >
         </p>
-        <canvas class="container" id="visualizer"></canvas>
+        <canvas class="container-fluid" id="visualizer"></canvas>
         <!-- 
         <audio controls>
           <source src="weirdmon.mp3" type="audio/mpeg" />
