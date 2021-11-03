@@ -1,0 +1,22 @@
+{
+  "name": "personal_website",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cidetraq/portfolio.git"
+  },
+  "author": "Nicholas A. Randall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cidetraq/portfolio/issues"
+  },
+  "homepage": "https://github.com/cidetraq/portfolio#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
