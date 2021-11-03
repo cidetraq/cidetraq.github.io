@@ -28,9 +28,9 @@ function play() {
   audio.play();
 }
 
-function animationLooper() {
+function setScreenGradient() {
   // set to the size of device
-  canvas = document.getElementById("visualizer");
+  canvas = document.documentElement;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   ctx = canvas.getContext("2d");
@@ -43,7 +43,18 @@ function animationLooper() {
   gradient.addColorStop(0, "rgba(35, 7, 77, 1)");
   gradient.addColorStop(1, "rgba(204, 83, 51, 1)");
   ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+function animationLooper() {
+  // setScreenGradient();
+  // set to the size of device
+  canvas = document.getElementById("visualizer");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx = canvas.getContext("2d");
+  // find the center of the window
+  center_x = canvas.width / 2;
+  center_y = canvas.height / 2;
+  radius = canvas.width / 10;
   //draw a circle
   ctx.beginPath();
   ctx.arc(center_x, center_y, radius, 0, 2 * Math.PI);

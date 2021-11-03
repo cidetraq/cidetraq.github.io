@@ -31,3 +31,34 @@
     border-radius: ;
   }
 } */
+
+/* gradient background */
+
+.bg {
+  background: linear-gradient(
+    to bottom right,
+    #1f2327,
+    #322946,
+    #410e3a,
+    #4f076b,
+    #160464,
+    #1b3850,
+    #431f68,
+    #4f2257
+  );
+  background-repeat: no-repeat;
+  background-size: 1000% 1000%;
+  animation: gradient 72s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
