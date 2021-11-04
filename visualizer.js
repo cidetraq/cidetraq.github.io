@@ -44,6 +44,9 @@ function setScreenGradient() {
   gradient.addColorStop(1, "rgba(204, 83, 51, 1)");
   ctx.fillStyle = gradient;
 }
+
+let circle;
+
 function animationLooper() {
   // setScreenGradient();
   // set to the size of device
@@ -55,10 +58,14 @@ function animationLooper() {
   center_x = canvas.width / 2;
   center_y = canvas.height / 2;
   radius = canvas.width / 10;
+
   //draw a circle
-  ctx.beginPath();
-  ctx.arc(center_x, center_y, radius, 0, 2 * Math.PI);
-  ctx.stroke();
+  circle = new Path2D();
+  circle.arc(center_x, center_y, radius, 0, 2 * Math.PI);
+  var lineColor = "#ffffff";
+  ctx.strokeStyle = lineColor;
+  ctx.stroke(circle);
+
   analyser.getByteFrequencyData(frequency_array);
   for (var i = 0; i < bars; i++) {
     //divide a circle into equal parts
@@ -84,3 +91,45 @@ function drawBar(x1, y1, x2, y2, width, frequency) {
   ctx.lineTo(x2, y2);
   ctx.stroke();
 }
+
+//Function to get the mouse position
+function getMousePos(canvas, event) {
+  var rect = canvas.getBoundingClientRect();
+  return {
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top,
+  };
+}
+//Function to check whether a point is inside a rectangle
+function isInside(pos, rect) {
+  return (
+    pos.x > rect.x &&
+    pos.x < rect.x + rect.width &&
+    pos.y < rect.y + rect.height &&
+    pos.y > rect.y
+  );
+}
+
+function clickInCanvas() {
+  var visualizer = document.getElementById("visualizer");
+  const { x, y } = getMousePos(visualizer, event);
+  if (ctx.isPointInPath(circle, x, y)) {
+    play();
+  } else {
+    console.log("point not inside inner circle.");
+  }
+}
+// //Binding the click event on the canvas
+// canvas.addEventListener(
+//   "click",
+//   function (evt) {
+//     var mousePos = getMousePos(canvas, evt);
+
+//     if (isInside(mousePos, rect)) {
+//       alert("clicked inside rect");
+//     } else {
+//       alert("clicked outside rect");
+//     }
+//   },
+//   false
+// );

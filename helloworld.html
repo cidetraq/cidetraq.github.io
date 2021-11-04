@@ -35,16 +35,23 @@
 
       <main class="px-3">
         <h1>Organic beats.</h1>
-        <p class="lead">
-          <a
-            href="#"
-            id="play-btn"
-            onclick="play()"
-            class="btn btn-lg btn-secondary fw-bold"
-            >Play</a
-          >
-        </p>
-        <canvas class="container-fluid" id="visualizer"></canvas>
+        <div class="container-fluid">
+          <!-- <div id="play-btn-container">
+            <a
+              href="#play"
+              id="play-btn"
+              onclick="play()"
+              class="btn btn-secondary fw-bold"
+              >Play</a
+            >
+          </div> -->
+          <canvas
+            class="container-fluid"
+            id="visualizer"
+            onclick="clickInCanvas();"
+          ></canvas>
+        </div>
+
         <!-- 
         <audio controls>
           <source src="weirdmon.mp3" type="audio/mpeg" />
