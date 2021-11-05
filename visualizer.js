@@ -9,11 +9,12 @@ var canvas,
   y_end,
   bar_height,
   bar_width,
-  frequency_array;
+  frequency_array,
+  circle;
 bars = 200;
 bar_width = 2;
 
-//setup
+//setup analyser
 audio = new Audio();
 context = new (window.AudioContext || window.webkitAudioContext)();
 analyser = context.createAnalyser();
@@ -28,32 +29,12 @@ function play() {
   audio.play();
 }
 
-function setScreenGradient() {
-  // set to the size of device
-  canvas = document.documentElement;
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  ctx = canvas.getContext("2d");
-  // find the center of the window
-  center_x = canvas.width / 2;
-  center_y = canvas.height / 2;
-  radius = canvas.width / 10;
-  // style the background
-  var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  gradient.addColorStop(0, "rgba(35, 7, 77, 1)");
-  gradient.addColorStop(1, "rgba(204, 83, 51, 1)");
-  ctx.fillStyle = gradient;
-}
-
-let circle;
-
 function animationLooper() {
-  // setScreenGradient();
-  // set to the size of device
   canvas = document.getElementById("visualizer");
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   ctx = canvas.getContext("2d");
+
   // find the center of the window
   center_x = canvas.width / 2;
   center_y = canvas.height / 2;
@@ -66,6 +47,12 @@ function animationLooper() {
   ctx.strokeStyle = lineColor;
   ctx.stroke(circle);
 
+  //setup touch listener
+  canvas.addEventListener("touchstart", clickInCanvas);
+  // setup mouse listener
+  canvas.addEventListener("click", clickInCanvas);
+
+  //analyzer
   analyser.getByteFrequencyData(frequency_array);
   for (var i = 0; i < bars; i++) {
     //divide a circle into equal parts
@@ -81,7 +68,7 @@ function animationLooper() {
   }
   window.requestAnimationFrame(animationLooper);
 }
-// for drawing a bar
+
 function drawBar(x1, y1, x2, y2, width, frequency) {
   var lineColor = "rgb(" + frequency + ", " + frequency + ", " + 205 + ")";
   ctx.strokeStyle = lineColor;
@@ -92,15 +79,32 @@ function drawBar(x1, y1, x2, y2, width, frequency) {
   ctx.stroke();
 }
 
-//Function to get the mouse position
-function getMousePos(canvas, event) {
-  var rect = canvas.getBoundingClientRect();
-  return {
-    x: event.clientX - rect.left,
-    y: event.clientY - rect.top,
-  };
+function clickInCanvas(event) {
+  const res = getClickTapPos(event);
+  if (isInside(res.pos, res.rect)) {
+    play();
+  } else {
+    console.log("point not inside inner circle.");
+  }
 }
-//Function to check whether a point is inside a rectangle
+
+//Function to get the mouse / tap position
+function getClickTapPos(event) {
+  var rect = canvas.getBoundingClientRect();
+  var x, y;
+  if (event.changedTouches) {
+    event.preventDefault();
+    x = event.changedTouches[0].clientX - rect.left;
+    y = event.changedTouches[0].clientY - rect.left;
+  } else {
+    x = event.clientX - rect.left;
+    y = event.clientY - rect.left;
+  }
+  pos = { x, y };
+  return { pos, rect };
+}
+
+//Function to check whether a point is inside a rectangle (NOT USED)
 function isInside(pos, rect) {
   return (
     pos.x > rect.x &&
@@ -109,27 +113,3 @@ function isInside(pos, rect) {
     pos.y > rect.y
   );
 }
-
-function clickInCanvas() {
-  var visualizer = document.getElementById("visualizer");
-  const { x, y } = getMousePos(visualizer, event);
-  if (ctx.isPointInPath(circle, x, y)) {
-    play();
-  } else {
-    console.log("point not inside inner circle.");
-  }
-}
-// //Binding the click event on the canvas
-// canvas.addEventListener(
-//   "click",
-//   function (evt) {
-//     var mousePos = getMousePos(canvas, evt);
-
-//     if (isInside(mousePos, rect)) {
-//       alert("clicked inside rect");
-//     } else {
-//       alert("clicked outside rect");
-//     }
-//   },
-//   false
-// );
