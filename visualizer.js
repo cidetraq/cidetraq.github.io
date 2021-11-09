@@ -10,7 +10,10 @@ var canvas,
   bar_height,
   bar_width,
   frequency_array,
-  circle;
+  circle,
+  audioIsPlaying,
+  pauseSVG,
+  playSVG;
 bars = 200;
 bar_width = 2;
 
@@ -24,6 +27,30 @@ source = context.createMediaElementSource(audio);
 source.connect(analyser);
 analyser.connect(context.destination);
 frequency_array = new Uint8Array(analyser.frequencyBinCount);
+audioIsPlaying = false;
+//setup canvas
+canvas = document.getElementById("visualizer");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+ctx = canvas.getContext("2d");
+
+// var xml = new XMLSerializer().serializeToString(pauseSVG);
+// // make it base64
+// var svg64 = btoa(xml);
+// var b64Start = "data:image/svg+xml;base64,";
+
+// // prepend a "header"
+// var image64 = b64Start + svg64;
+
+// // set it as the source of the img element
+// var pauseImage = new Image();
+// pauseImage.src = image64;
+// ctx.drawImage(pauseImage, center_x, center_y);
+
+//setup touch listener
+canvas.addEventListener("touchstart", clickInCanvas);
+// setup mouse listener
+canvas.addEventListener("click", clickInCanvas);
 
 function play() {
   audio.play();
@@ -34,12 +61,10 @@ function animationLooper() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   ctx = canvas.getContext("2d");
-
   // find the center of the window
   center_x = canvas.width / 2;
   center_y = canvas.height / 2;
   radius = canvas.width / 10;
-
   //draw a circle
   circle = new Path2D();
   circle.arc(center_x, center_y, radius, 0, 2 * Math.PI);
@@ -47,10 +72,17 @@ function animationLooper() {
   ctx.strokeStyle = lineColor;
   ctx.stroke(circle);
 
-  //setup touch listener
-  canvas.addEventListener("touchstart", clickInCanvas);
-  // setup mouse listener
-  canvas.addEventListener("click", clickInCanvas);
+  //draw pause button
+  pauseSVG = new Image();
+  pauseSVG.src = "pause-fill.svg";
+  var path1 = new Path2D(
+    "M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"
+  );
+  ctx.translate(center_x - radius, center_y - radius);
+  ctx.scale(10, 10);
+  ctx.stroke(path1);
+  ctx.translate(-center_x + radius, -center_y + radius);
+  ctx.scale(0.1, 0.1);
 
   //analyzer
   analyser.getByteFrequencyData(frequency_array);
@@ -81,10 +113,14 @@ function drawBar(x1, y1, x2, y2, width, frequency) {
 
 function clickInCanvas(event) {
   const res = getClickTapPos(event);
-  if (isInside(res.pos, res.rect)) {
-    play();
+  if (!audioIsPlaying) {
+    if (isInside(res.pos, res.rect)) {
+      play();
+      audioIsPlaying = true;
+    } else {
+      console.log("point not inside inner circle.");
+    }
   } else {
-    console.log("point not inside inner circle.");
   }
 }
 
@@ -113,3 +149,23 @@ function isInside(pos, rect) {
     pos.y > rect.y
   );
 }
+
+// //SVG
+
+// var svg = document.querySelector("svg");
+// var img = document.querySelector("img");
+
+// // get svg data
+// var xml = new XMLSerializer().serializeToString(svg);
+
+// // make it base64
+// var svg64 = btoa(xml);
+// var b64Start = "data:image/svg+xml;base64,";
+
+// // prepend a "header"
+// var image64 = b64Start + svg64;
+
+// // set it as the source of the img element
+// img.src = image64;
+
+// // draw the image onto the canvas
