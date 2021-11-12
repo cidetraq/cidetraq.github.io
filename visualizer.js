@@ -11,7 +11,6 @@ var canvas,
   bar_width,
   frequency_array,
   circle,
-  audioIsPlaying,
   pauseSVG,
   playSVG;
 bars = 200;
@@ -29,7 +28,6 @@ function setup() {
   source.connect(analyser);
   analyser.connect(context.destination);
   frequency_array = new Uint8Array(analyser.frequencyBinCount);
-  audioIsPlaying = false;
 
   //setup canvas
   canvas = document.getElementById("visualizer");
@@ -58,7 +56,13 @@ function setup() {
 }
 
 function play() {
-  audio.play();
+  if (audio.paused) {
+    pausePlayButton.src = "pause-fill.svg";
+    audio.play();
+  } else {
+    pausePlayButton.src = "play-fill.svg";
+    audio.pause();
+  }
 }
 
 function animationLooper() {
@@ -107,10 +111,10 @@ function drawBar(x1, y1, x2, y2, width, frequency) {
 
 function clickInCanvas(event) {
   const res = getClickTapPos(event);
-  if (!audioIsPlaying) {
+  if (!audio.play) {
     if (isInside(res.pos, res.rect)) {
       play();
-      audioIsPlaying = true;
+      audio.play = true;
     } else {
       console.log("point not inside inner circle.");
     }
