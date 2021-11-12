@@ -17,40 +17,45 @@ var canvas,
 bars = 200;
 bar_width = 2;
 
-//setup analyser
-audio = new Audio();
-context = new (window.AudioContext || window.webkitAudioContext)();
-analyser = context.createAnalyser();
-audio.crossOrigin = "anonymous";
-audio.src = "weirdmon.mp3";
-source = context.createMediaElementSource(audio);
-source.connect(analyser);
-analyser.connect(context.destination);
-frequency_array = new Uint8Array(analyser.frequencyBinCount);
-audioIsPlaying = false;
-//setup canvas
-canvas = document.getElementById("visualizer");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-ctx = canvas.getContext("2d");
+function setup() {
+  //setup analyser
+  audio = new Audio();
+  audio.volume = 0.1;
+  context = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = context.createAnalyser();
+  audio.crossOrigin = "anonymous";
+  audio.src = "weirdmon.mp3";
+  source = context.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(context.destination);
+  frequency_array = new Uint8Array(analyser.frequencyBinCount);
+  audioIsPlaying = false;
 
-// var xml = new XMLSerializer().serializeToString(pauseSVG);
-// // make it base64
-// var svg64 = btoa(xml);
-// var b64Start = "data:image/svg+xml;base64,";
+  //setup canvas
+  canvas = document.getElementById("visualizer");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx = canvas.getContext("2d");
 
-// // prepend a "header"
-// var image64 = b64Start + svg64;
+  //setup pausePlayButton
+  var pausePlayButton = document.getElementById("pausePlayButton");
+  center_x = canvas.width / 2;
+  center_y = canvas.height / 2;
+  radius = canvas.width / 10;
+  pausePlayButton.width = Math.floor(radius);
+  pausePlayButton.height = Math.floor(radius);
+  var offset = Math.sqrt(radius ** 2 + radius ** 2);
+  var top = center_y + canvas.height / 10 - radius / 2;
+  var left = center_x - canvas.width / 10 + radius / 2;
+  pausePlayButton.style.position = "absolute";
+  pausePlayButton.style.top = top += "px";
+  pausePlayButton.style.left = left += "px";
+  console.log(pausePlayButton);
+  console.log(center_y);
+  console.log(radius);
 
-// // set it as the source of the img element
-// var pauseImage = new Image();
-// pauseImage.src = image64;
-// ctx.drawImage(pauseImage, center_x, center_y);
-
-//setup touch listener
-canvas.addEventListener("touchstart", clickInCanvas);
-// setup mouse listener
-canvas.addEventListener("click", clickInCanvas);
+  animationLooper();
+}
 
 function play() {
   audio.play();
@@ -72,18 +77,6 @@ function animationLooper() {
   ctx.strokeStyle = lineColor;
   ctx.stroke(circle);
 
-  //draw pause button
-  pauseSVG = new Image();
-  pauseSVG.src = "pause-fill.svg";
-  var path1 = new Path2D(
-    "M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"
-  );
-  ctx.translate(center_x - radius, center_y - radius);
-  ctx.scale(10, 10);
-  ctx.stroke(path1);
-  ctx.translate(-center_x + radius, -center_y + radius);
-  ctx.scale(0.1, 0.1);
-
   //analyzer
   analyser.getByteFrequencyData(frequency_array);
   for (var i = 0; i < bars; i++) {
@@ -98,6 +91,7 @@ function animationLooper() {
     //draw a bar
     drawBar(x, y, x_end, y_end, bar_width, frequency_array[i]);
   }
+  // ctx.drawImage(img, 0, 0);
   window.requestAnimationFrame(animationLooper);
 }
 
@@ -149,23 +143,3 @@ function isInside(pos, rect) {
     pos.y > rect.y
   );
 }
-
-// //SVG
-
-// var svg = document.querySelector("svg");
-// var img = document.querySelector("img");
-
-// // get svg data
-// var xml = new XMLSerializer().serializeToString(svg);
-
-// // make it base64
-// var svg64 = btoa(xml);
-// var b64Start = "data:image/svg+xml;base64,";
-
-// // prepend a "header"
-// var image64 = b64Start + svg64;
-
-// // set it as the source of the img element
-// img.src = image64;
-
-// // draw the image onto the canvas
