@@ -48,10 +48,6 @@ function setup() {
   pausePlayButton.style.position = "absolute";
   pausePlayButton.style.top = top += "px";
   pausePlayButton.style.left = left += "px";
-  console.log(pausePlayButton);
-  console.log(center_y);
-  console.log(radius);
-
   animationLooper();
 }
 
