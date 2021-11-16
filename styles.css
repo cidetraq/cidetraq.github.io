@@ -71,8 +71,8 @@
     #4f2257
   );
   background-repeat: no-repeat;
-  background-size: 1000% 1000%;
-  animation: gradient 72s ease infinite;
+  background-size: 10000% 10000%;
+  animation: gradient 72s linear infinite;
 }
 
 @keyframes gradient {
