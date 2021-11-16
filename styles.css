@@ -20,6 +20,19 @@
   color: black !important;
   font-size: large;
 }
+
+#topnavlinks {
+  background-color: rgba(0, 0, 0, 0.698);
+  color: white;
+}
+
+#tagline {
+  margin-top: 10rem;
+}
+
+#contactModal {
+  color: black;
+}
 @keyframes myanim {
   20% {
     border-color: green;
@@ -84,7 +97,7 @@
   right: 0;
 }
 
-#pausePlayButton {
+.whiteSVG {
   filter: invert(98%) sepia(1%) saturate(200%) hue-rotate(87deg)
     brightness(114%) contrast(100%);
 }

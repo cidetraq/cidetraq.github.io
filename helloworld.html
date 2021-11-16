@@ -14,31 +14,91 @@
     />
     <!-- Custom CSS -->
     <link href="styles.css" rel="stylesheet" />
-    <title>Nicholas A. Randall's personal website</title>
+    <title>Nicholas A. Randall's website</title>
   </head>
   <body class="d-flex h-100 text-center text-white bg-dark" onload="setup()">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column bg">
       <header class="mb-auto">
-        <div>
-          <h2 class="float-md-start mb-0">Nicholas A. Randall</h2>
+        <nav
+          class="navbar fixed-top justify-content-center shadow-lg"
+          id="topnavlinks"
+        >
+          <h2 class="">Nicholas A. Randall</h2>
           <nav class="nav nav-masthead justify-content-center float-md-end">
-            <a class="nav-link active" aria-current="page" href="#home">Home</a>
-            <a class="nav-link" href="#portfolio">Portfolio</a>
-            <a class="nav-link" href="#contact">About</a>
-            <a class="nav-link" href="#contact">Contact</a>
+            <a class="nav-link" href="https://www.instagram.com/apogiimusic/"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-instagram"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+                />
+              </svg>
+            </a>
+            <a class="nav-link" href="https://twitter.com/apogiimusic"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-twitter"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+                />
+              </svg>
+            </a>
+            <a class="nav-link" href="https://soundcloud.com/apogii"
+              ><img src="soundcloud.svg" class="whiteSVG" width="32px"
+            /></a>
+            <a class="nav-link" href="https://github.com/cidetraq/"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                fill="currentColor"
+                class="bi bi-github"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                />
+              </svg>
+            </a>
           </nav>
-        </div>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" href="#visualizer">Visualizer</a>
+            <a class="nav-link" href="#portfolio">Portfolio</a>
+            <a class="nav-link" href="#about">About</a>
+            <a
+              class="nav-link btn"
+              data-bs-toggle="modal"
+              data-bs-target="#contactModal"
+              >Contact</a
+            >
+          </nav>
+        </nav>
       </header>
 
       <main class="px-3">
-        <h1>Organic beats.</h1>
+        <h1 id="tagline">Organic beats.</h1>
         <div>
           <canvas
             class="container-fluid"
             id="visualizer"
             onclick="play()"
           ></canvas>
-          <img id="pausePlayButton" src="play-fill.svg" onclick="play()" />
+          <img
+            id="pausePlayButton"
+            class="whiteSVG"
+            src="play-fill.svg"
+            onclick="play()"
+          />
         </div>
 
         <div id="portfolio">
@@ -47,13 +107,47 @@
               <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 <div class="col">
                   <div class="card shadow-sm text-dark">
-                    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/977261737&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/apogii" title="apogii" target="_blank" style="color: #cccccc; text-decoration: none;">apogii</a> · <a href="https://soundcloud.com/apogii/junkyard-ft-savestatecorrupted" title="Junkyard Ft. savestatecorrupted" target="_blank" style="color: #cccccc; text-decoration: none;">Junkyard Ft. savestatecorrupted</a></div>                      </text>
-                    </svg>
-
+                    <iframe
+                      width="100%"
+                      height="166"
+                      scrolling="no"
+                      frameborder="no"
+                      allow="autoplay"
+                      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/977261737&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                    ></iframe>
+                    <div
+                      style="
+                        font-size: 10px;
+                        color: #cccccc;
+                        line-break: anywhere;
+                        word-break: normal;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        font-family: Interstate, Lucida Grande,
+                          Lucida Sans Unicode, Lucida Sans, Garuda, Verdana,
+                          Tahoma, sans-serif;
+                        font-weight: 100;
+                      "
+                    >
+                      <a
+                        href="https://soundcloud.com/apogii"
+                        title="apogii"
+                        target="_blank"
+                        style="color: #cccccc; text-decoration: none"
+                        >apogii</a
+                      >
+                      ·
+                      <a
+                        href="https://soundcloud.com/apogii/junkyard-ft-savestatecorrupted"
+                        title="Junkyard Ft. savestatecorrupted"
+                        target="_blank"
+                        style="color: #cccccc; text-decoration: none"
+                        >Junkyard Ft. savestatecorrupted</a
+                      >
+                    </div>
                     <div class="card-body">
-                      <p class="card-text">
-                        Made for Global Game Jam 2021.
-                      </p>
+                      <p class="card-text">Made for Global Game Jam 2021.</p>
                       <div
                         class="
                           d-flex
@@ -81,15 +175,53 @@
                   </div>
                 </div>
                 <div class="col">
-                  <div class="card shadow-sm">
+                  <div class="card shadow-sm text-dark">
                     <div class="bigtext">
-                    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/938380987&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/apogii" title="apogii" target="_blank" style="text-decoration: none;">apogii</a> · <a href="https://soundcloud.com/apogii/mega-moe-89" title="Mega Moe &#x27;89" target="_blank" style="color: #cccccc; text-decoration: none;">Mega Moe &#x27;89</a></div>
-                  </div>
+                      <iframe
+                        width="100%"
+                        height="166"
+                        scrolling="no"
+                        frameborder="no"
+                        allow="autoplay"
+                        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/938380987&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                      ></iframe>
+                      <div
+                        style="
+                          font-size: 10px;
+                          color: #cccccc;
+                          line-break: anywhere;
+                          word-break: normal;
+                          overflow: hidden;
+                          white-space: nowrap;
+                          text-overflow: ellipsis;
+                          font-family: Interstate, Lucida Grande,
+                            Lucida Sans Unicode, Lucida Sans, Garuda, Verdana,
+                            Tahoma, sans-serif;
+                          font-weight: 100;
+                        "
+                      >
+                        <a
+                          href="https://soundcloud.com/apogii"
+                          title="apogii"
+                          target="_blank"
+                          style="text-decoration: none"
+                          >apogii</a
+                        >
+                        ·
+                        <a
+                          href="https://soundcloud.com/apogii/mega-moe-89"
+                          title="Mega Moe &#x27;89"
+                          target="_blank"
+                          style="color: #cccccc; text-decoration: none"
+                          >Mega Moe &#x27;89</a
+                        >
+                      </div>
+                    </div>
                     <div class="card-body">
                       <p class="card-text">
-                        This is a wider card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
+                        One of my best works, this draws on nostalgic video game
+                        and anime influences and is composition-heavy. Made for
+                        Underbelly's Kawaiiwave server contest.
                       </p>
                       <div
                         class="
@@ -119,22 +251,45 @@
                 </div>
                 <div class="col">
                   <div class="card shadow-sm">
-                    <svg
-                      class="bd-placeholder-img card-img-top"
+                    <iframe
                       width="100%"
-                      height="225"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Thumbnail"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
+                      height="166"
+                      scrolling="no"
+                      frameborder="no"
+                      allow="autoplay"
+                      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/740519746&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                    ></iframe>
+                    <div
+                      style="
+                        font-size: 10px;
+                        color: #cccccc;
+                        line-break: anywhere;
+                        word-break: normal;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        font-family: Interstate, Lucida Grande,
+                          Lucida Sans Unicode, Lucida Sans, Garuda, Verdana,
+                          Tahoma, sans-serif;
+                        font-weight: 100;
+                      "
                     >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#55595c" />
-                      <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                        Thumbnail
-                      </text>
-                    </svg>
+                      <a
+                        href="https://soundcloud.com/apogii"
+                        title="apogii"
+                        target="_blank"
+                        style="color: #cccccc; text-decoration: none"
+                        >apogii</a
+                      >
+                      ·
+                      <a
+                        href="https://soundcloud.com/apogii/reluctance"
+                        title="chipogii:: Reluctance"
+                        target="_blank"
+                        style="color: #cccccc; text-decoration: none"
+                        >chipogii:: Reluctance</a
+                      >
+                    </div>
 
                     <div class="card-body">
                       <p class="card-text">
@@ -171,22 +326,45 @@
 
                 <div class="col">
                   <div class="card shadow-sm">
-                    <svg
-                      class="bd-placeholder-img card-img-top"
+                    <iframe
                       width="100%"
-                      height="225"
-                      xmlns="http://www.w3.org/2000/svg"
-                      role="img"
-                      aria-label="Placeholder: Thumbnail"
-                      preserveAspectRatio="xMidYMid slice"
-                      focusable="false"
+                      height="166"
+                      scrolling="no"
+                      frameborder="no"
+                      allow="autoplay"
+                      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/902985358&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+                    ></iframe>
+                    <div
+                      style="
+                        font-size: 10px;
+                        color: #cccccc;
+                        line-break: anywhere;
+                        word-break: normal;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        font-family: Interstate, Lucida Grande,
+                          Lucida Sans Unicode, Lucida Sans, Garuda, Verdana,
+                          Tahoma, sans-serif;
+                        font-weight: 100;
+                      "
                     >
-                      <title>Placeholder</title>
-                      <rect width="100%" height="100%" fill="#55595c" />
-                      <text x="50%" y="50%" fill="#eceeef" dy=".3em">
-                        Thumbnail
-                      </text>
-                    </svg>
+                      <a
+                        href="https://soundcloud.com/apogii"
+                        title="apogii"
+                        target="_blank"
+                        style="color: #cccccc; text-decoration: none"
+                        >apogii</a
+                      >
+                      ·
+                      <a
+                        href="https://soundcloud.com/apogii/spaaaaace"
+                        title="Spaaaaace (Theme from ARocket Lander)"
+                        target="_blank"
+                        style="color: #cccccc; text-decoration: none"
+                        >Spaaaaace (Theme from ARocket Lander)</a
+                      >
+                    </div>
 
                     <div class="card-body">
                       <p class="card-text">
@@ -480,13 +658,56 @@
             </div>
           </div>
         </div>
+
         <!-- 
         <audio controls>
           <source src="weirdmon.mp3" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio> -->
+
+        <div id="about">
+          <h1>About Me</h1>
+          <img
+            src="profileimg.png"
+            class="img-fluid shadow-lg mb-5 bg-white rounded"
+            alt="Responsive image"
+          />
+          <p class="lead">
+            Musician, software engineer and fitness enthusiast. I have created
+            soundtracks for video games, soundscapes for art installations, and
+            experimental pieces. I built this website and many more, and
+            developed some indie game content on the side. I...uh...deadlift
+            315x1 lbs natty. Shoot me a note if any of this sounds interesting!
+          </p>
+        </div>
       </main>
 
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="contactModal"
+        tabindex="-1"
+        aria-labelledby="contactModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+              apogiimusic@gmail.com or dm me on twitter
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <footer class="mt-auto text-white-50">
         <p>Designed by Nicholas A. Randall</p>
       </footer>
