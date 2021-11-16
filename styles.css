@@ -37,6 +37,10 @@ body {
 #contactModal {
   color: black;
 }
+
+#visualizer{
+
+}
 @keyframes myanim {
   20% {
     border-color: green;
@@ -53,12 +57,12 @@ body {
 }
 
 /* Responsive visualizer */
-/* #visualizer {
+#visualizer {
   @media only screen and (max-width: 575px) {
     max-height: 50%;
     border-radius: ;
   }
-} */
+}
 
 /* gradient background */
 
