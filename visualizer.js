@@ -39,7 +39,7 @@ function setup() {
   var pausePlayButton = document.getElementById("pausePlayButton");
   center_x = canvas.width / 2;
   center_y = canvas.height / 2;
-  radius = canvas.width / 10;
+  radius = canvas.width / 5;
   pausePlayButton.width = Math.floor(radius);
   pausePlayButton.height = Math.floor(radius);
   var offset = Math.sqrt(radius ** 2 + radius ** 2);
@@ -61,12 +61,14 @@ function play() {
 function animationLooper() {
   canvas = document.getElementById("visualizer");
   canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.height =
+    window.innerWidth > 600 ? window.innerHeight : window.innerHeight / 2;
   ctx = canvas.getContext("2d");
   // find the center of the window
   center_x = canvas.width / 2;
   center_y = canvas.height / 2;
-  radius = canvas.width / 10;
+  radiusResponsiveDivisor = center_x > 300 ? 10 : 5;
+  radius = canvas.width / radiusResponsiveDivisor;
   //draw a circle
   circle = new Path2D();
   circle.arc(center_x, center_y, radius, 0, 2 * Math.PI);
