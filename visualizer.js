@@ -45,9 +45,6 @@ function setup() {
   var offset = Math.sqrt(radius ** 2 + radius ** 2);
   var top = center_y + canvas.height / 10 - radius / 2;
   var left = center_x - canvas.width / 10 + radius / 2;
-  pausePlayButton.style.position = "absolute";
-  pausePlayButton.style.top = top += "px";
-  pausePlayButton.style.left = left += "px";
   animationLooper();
 }
 

@@ -101,3 +101,12 @@
   filter: invert(98%) sepia(1%) saturate(200%) hue-rotate(87deg)
     brightness(114%) contrast(100%);
 }
+
+footer p {
+  margin-bottom: 0;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
