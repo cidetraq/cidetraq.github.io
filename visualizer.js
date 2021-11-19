@@ -1,5 +1,6 @@
 // https://www.kkhaydarov.com/audio-visualizer/
-var canvas,
+var audio,
+  canvas,
   ctx,
   center_x,
   center_y,
@@ -16,9 +17,10 @@ var canvas,
 bars = 200;
 bar_width = 2;
 
-function setup() {
+function audioSetup() {
   //setup analyser
   audio = new Audio();
+  // audio.preload = "none";
   audio.volume = 0.1;
   context = new (window.AudioContext || window.webkitAudioContext)();
   analyser = context.createAnalyser();
@@ -28,7 +30,10 @@ function setup() {
   source.connect(analyser);
   analyser.connect(context.destination);
   frequency_array = new Uint8Array(analyser.frequencyBinCount);
+  animationLooper();
+}
 
+function setup() {
   //setup canvas
   canvas = document.getElementById("visualizer");
   canvas.width = window.innerWidth;
@@ -47,10 +52,12 @@ function setup() {
   var offset = Math.sqrt(radius ** 2 + radius ** 2);
   var top = center_y + canvas.height / 10 - radius / 2;
   var left = center_x - canvas.width / 10 + radius / 2;
-  animationLooper();
 }
 
 function play() {
+  if (!audio) {
+    audioSetup();
+  }
   if (audio.paused) {
     pausePlayButton.src = "pause-fill.svg";
     audio.play();
