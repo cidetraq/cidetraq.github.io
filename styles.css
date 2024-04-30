@@ -60,13 +60,12 @@ body {
 #visualizer {
   @media only screen and (max-width: 575px) {
     max-height: 50%;
-    border-radius: ;
   }
 }
 
 /* gradient background */
 
-.bg {
+/* .bg {
   background: linear-gradient(
     to bottom right,
     #1f2327,
@@ -81,7 +80,7 @@ body {
   background-repeat: no-repeat;
   background-size: 10000% 10000%;
   animation: gradient 72s linear infinite;
-}
+} */
 
 @keyframes gradient {
   0% {
@@ -92,6 +91,24 @@ body {
   }
   100% {
     background-position: 0% 0%;
+  }
+}
+
+:root {
+  --angle: 0deg;
+}
+
+.bg {
+  background: linear-gradient(var(--angle), #1f2327, #4f2257);
+  animation: rotateGradient 72s linear infinite;
+}
+
+@keyframes rotateGradient {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
   }
 }
 
