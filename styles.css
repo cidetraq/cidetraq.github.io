@@ -135,3 +135,30 @@ footer a {
   color: white;
   text-decoration: none;
 }
+
+.card-top {
+  width: 100%; /* Adjusts the width of the container to full width of its parent */
+  display: flex; /* Uses Flexbox for alignment */
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center; /* Centers the image vertically */
+  overflow: hidden; /* Prevents any overflow from the container */
+  background-color: black;
+}
+
+.card-top img {
+  height: 300px;
+  width: auto; /* Automatically adjusts the width to maintain aspect ratio */
+}
+
+.profile-img {
+  width: 50%;
+  border-radius: 50% !important;
+  aspect-ratio: 1 / 1;
+  object-fit: cover; /* Cover the container without distorting the image */
+  object-position: center; /* Center the focus of the image */
+}
+@media (max-width: 550px) {
+  .profile-img {
+    width: auto;
+  }
+}
