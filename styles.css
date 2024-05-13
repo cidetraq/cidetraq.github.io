@@ -41,6 +41,30 @@ body {
 .card {
   color: black;
 }
+
+.card-link {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit text color */
+  display: block;
+}
+
+.card-link img {
+  height: 300px;
+  width: auto;
+  object-fit: cover; /* Cover the container without distorting the image */
+  object-position: center; /* Center the focus of the image */
+}
+
+a img {
+  object-fit: cover; /* Cover the container without distorting the image */
+  object-position: center; /* Center the focus of the image */
+}
+
+.card-link:hover {
+  text-decoration: none; /* Remove underline on hover */
+  color: inherit; /* Inherit text color on hover */
+}
+
 @keyframes myanim {
   20% {
     border-color: green;
@@ -145,17 +169,13 @@ footer a {
   background-color: black;
 }
 
-.card-top img {
-  height: 300px;
-  width: auto; /* Automatically adjusts the width to maintain aspect ratio */
-}
-
 .profile-img {
-  width: 50%;
+  width: auto;
   border-radius: 50% !important;
   aspect-ratio: 1 / 1;
   object-fit: cover; /* Cover the container without distorting the image */
   object-position: center; /* Center the focus of the image */
+  max-height: 500px;
 }
 @media (max-width: 550px) {
   .profile-img {
