@@ -38,8 +38,23 @@ body {
   color: black;
 }
 
+.col {
+  overflow: visible;
+}
+
 .card {
   color: black;
+  transition: box-shadow 0.3s ease-in-out;
+  overflow: visible;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: transform 3s linear, opacity 0.5s;
 }
 
 .card-link {
@@ -87,53 +102,40 @@ a img {
   }
 }
 
-/* gradient background */
+html,
+body {
+  height: 100%; /* Ensure full coverage of the viewport */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrollbar due to slight overflow */
+}
 
-/* .bg {
+.bg {
+  z-index: -1; /* Keep it behind all other content */
   background: linear-gradient(
-    to bottom right,
-    #1f2327,
+    120deg,
+    /* Direction of the gradient */ #1f2327,
     #322946,
     #410e3a,
     #4f076b,
-    #160464,
-    #1b3850,
-    #431f68,
-    #4f2257
+    #160464
   );
-  background-repeat: no-repeat;
-  background-size: 10000% 10000%;
-  animation: gradient 72s linear infinite;
-} */
+  background-size: 300% 300%; /* Reduce size for performance improvement */
+  animation: gradient 15s linear infinite; /* Adjusted for a continuous smooth effect */
+}
 
 @keyframes gradient {
-  0% {
-    background-position: 0% 0%;
+  0%,
+  100% {
+    background-position: 100% 50%;
   }
   50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
+    background-position: 0% 50%;
   }
 }
 
 :root {
   --angle: 0deg;
-}
-
-.bg {
-  background: linear-gradient(var(--angle), #1f2327, #4f2257);
-  animation: rotateGradient 72s linear infinite;
-}
-
-@keyframes rotateGradient {
-  from {
-    --angle: 0deg;
-  }
-  to {
-    --angle: 360deg;
-  }
 }
 
 #play-btn-container {
@@ -181,4 +183,15 @@ footer a {
   .profile-img {
     width: auto;
   }
+}
+
+#tag-cloud span {
+  transition: font-size 0.3s ease-in-out; /* Smooth transition for font-size change */
+}
+
+#tag-cloud span:hover {
+  font-size: 120%;
+  color: yellow;
+  text-shadow: 0 0 15px yellow, 0 0 25px yellow;
+  animation: glow 4s linear infinite;
 }
