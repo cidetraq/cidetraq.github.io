@@ -19,18 +19,40 @@ cards.forEach((card, index) => {
 
 document.addEventListener("DOMContentLoaded", function () {
   const cards = document.querySelectorAll(".card");
+  let currentActiveCard = null; // Track the currently active card
+
+  function startParticles(card) {
+    if (currentActiveCard !== card) {
+      if (currentActiveCard) {
+        stopParticles(currentActiveCard); // Stop particles on previously active card
+      }
+      currentActiveCard = card; // Update the active card
+      card.intervalId = setInterval(() => createParticle(card), 50);
+    }
+  }
+
+  function stopParticles(card) {
+    if (card.intervalId) {
+      clearInterval(card.intervalId); // Clear the interval
+      const particles = card.querySelectorAll(".particle");
+      particles.forEach((particle) => particle.remove()); // Remove all particles
+      card.intervalId = null; // Reset the interval ID
+    }
+  }
 
   cards.forEach((card) => {
-    let intervalId = null;
-
     card.addEventListener("mouseenter", function () {
-      intervalId = setInterval(() => createParticle(this), 50);
+      startParticles(this);
     });
 
     card.addEventListener("mouseleave", function () {
-      clearInterval(intervalId);
-      const particles = this.querySelectorAll(".particle");
-      particles.forEach((particle) => particle.remove());
+      // Optionally keep the effect running until another card is touched or hovered
+      // stopParticles(this); // Uncomment if you want the effect to stop on mouse leave
+    });
+
+    card.addEventListener("touchstart", function (e) {
+      e.preventDefault(); // Prevent the window from scrolling
+      startParticles(this);
     });
   });
 
@@ -92,29 +114,25 @@ document.addEventListener("DOMContentLoaded", function () {
     span.addEventListener("mouseover", () => {
       const currentSize = parseFloat(window.getComputedStyle(span).fontSize);
       span.style.fontSize = `${currentSize * 1.2}px`; // Increase by 20%
+      span.classList.add("glowy-text");
     });
 
     span.addEventListener("mouseout", () => {
       const currentSize = parseFloat(window.getComputedStyle(span).fontSize);
       span.style.fontSize = `${currentSize / 1.2}px`; // Reset to original size
+      span.classList.remove("glowy-text");
+    });
+
+    span.addEventListener("touchstart", function (e) {
+      const currentSize = parseFloat(window.getComputedStyle(span).fontSize);
+      span.style.fontSize = `${currentSize * 1.2}px`; // Increase by 20%
+      span.classList.add("glowy-text");
+    });
+
+    span.addEventListener("touchend", function (e) {
+      const currentSize = parseFloat(window.getComputedStyle(span).fontSize);
+      span.style.fontSize = `${currentSize / 1.2}px`; // Reset to original size
+      span.classList.remove("glowy-text");
     });
   });
 });
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   const p = document.getElementById("tag-cloud").querySelector("p");
-//   const words = p.textContent.split(" "); // Split the paragraph text by spaces
-//   const maxFontSize = 32; // Maximum font size in pixels
-//   const minFontSize = 8; // Minimum font size in pixels
-//   const totalWords = words.length;
-
-//   p.innerHTML = ""; // Clear existing text
-
-//   words.forEach((word, index) => {
-//     let size = maxFontSize - (index * (maxFontSize - minFontSize)) / totalWords;
-//     let span = document.createElement("span"); // Create a new span for each word
-//     span.style.fontSize = `${size}px`; // Set font size
-//     span.textContent = word + " "; // Add the word back with a space
-//     p.appendChild(span); // Append the span to the paragraph
-//   });
-// });

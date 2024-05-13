@@ -13,12 +13,6 @@ body {
   animation: glow 4s linear infinite;
 }
 
-.portfolioActivePiece {
-  border-color: yellow;
-  border-width: medium;
-  animation: myanim 4s linear infinite;
-}
-
 .bigtext a {
   text-decoration: auto;
   color: black !important;
@@ -189,7 +183,7 @@ footer a {
   transition: font-size 0.3s ease-in-out; /* Smooth transition for font-size change */
 }
 
-#tag-cloud span:hover {
+.glowy-text {
   font-size: 120%;
   color: yellow;
   text-shadow: 0 0 15px yellow, 0 0 25px yellow;
