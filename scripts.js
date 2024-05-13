@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     card.addEventListener("touchstart", function (e) {
-      e.preventDefault(); // Prevent the window from scrolling
       startParticles(this);
     });
   });
